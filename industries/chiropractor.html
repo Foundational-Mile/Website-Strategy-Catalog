@@ -4,19 +4,250 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Chiropractor website strategy. Learn how to reduce first-visit anxiety, explain care in plain language, and make booking as simple as possible." />
-  <meta name="theme-color" content="#0f172a" />
-  <link rel="icon" href="../assets/images/favicon.ico" />
+  <meta name="theme-color" content="#0d9488" />
   <title>Chiropractor Website Strategy — Website Strategy Catalog</title>
-  <link rel="stylesheet" href="../assets/css/styles.css" />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&display=swap');
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    :root {
+      --sage:       #f0faf8;
+      --sage-mid:   #daf0ec;
+      --sage-dark:  #b8dfd9;
+      --teal:       #0d9488;
+      --teal-dark:  #0f766e;
+      --teal-light: #14b8a6;
+      --teal-pale:  #ccfbf1;
+      --text:       #134e4a;
+      --text-sub:   #3f7472;
+      --text-mute:  #7aada9;
+      --border:     #b2d8d4;
+      --border-card:#d1ece9;
+      --white:      #ffffff;
+      --radius:     1rem;
+      --radius-lg:  1.5rem;
+    }
+
+    body {
+      font-family: 'Nunito', system-ui, sans-serif;
+      background: var(--sage);
+      color: var(--text);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ─── Header ─────────────────────────────────────── */
+    header {
+      background: var(--white);
+      border-bottom: 1px solid var(--border-card);
+      position: sticky; top: 0; z-index: 50;
+      box-shadow: 0 2px 12px rgba(13,148,136,0.07);
+    }
+    nav {
+      max-width: 960px; margin: 0 auto;
+      padding: 1rem 1.5rem;
+      display: flex; align-items: center;
+      justify-content: space-between; flex-wrap: wrap; gap: 0.75rem;
+    }
+    .nav-brand {
+      font-size: 0.9rem; font-weight: 700;
+      color: var(--teal); text-decoration: none;
+    }
+    .nav-brand:hover { color: var(--teal-dark); }
+    .nav-links { display: flex; gap: 1.5rem; font-size: 0.875rem; flex-wrap: wrap; }
+    .nav-links a { color: var(--text-sub); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--teal); }
+    .nav-links a.accent { color: var(--teal); font-weight: 700; }
+
+    /* ─── Hero ───────────────────────────────────────── */
+    .hero {
+      background: var(--white);
+      padding: 5rem 1.5rem 4.5rem;
+      border-bottom: 1px solid var(--border-card);
+    }
+    .hero-inner { max-width: 720px; margin: 0 auto; }
+
+    .badge {
+      display: inline-flex; align-items: center;
+      background: var(--teal-pale);
+      color: var(--teal-dark);
+      font-size: 0.75rem; font-weight: 700;
+      padding: 0.35rem 1rem;
+      border-radius: 100px;
+      margin-bottom: 1.25rem;
+    }
+
+    h1 {
+      font-size: clamp(1.875rem, 5vw, 2.75rem);
+      font-weight: 800; color: var(--text);
+      line-height: 1.2; margin-bottom: 1.1rem;
+    }
+
+    h2 {
+      font-size: clamp(1.3rem, 3.5vw, 1.75rem);
+      font-weight: 700; color: var(--text);
+      line-height: 1.3; margin-bottom: 0.875rem;
+    }
+
+    .section-label {
+      font-size: 0.72rem; font-weight: 800;
+      color: var(--teal);
+      text-transform: uppercase; letter-spacing: 0.1em;
+      margin-bottom: 0.875rem; display: block;
+    }
+
+    .lead {
+      font-size: 1.1rem; color: var(--text-sub);
+      line-height: 1.8; max-width: 600px;
+    }
+
+    /* ─── Layout ──────────────────────────────────────── */
+    .container { max-width: 960px; margin: 0 auto; padding: 0 1.5rem; }
+    .narrow    { max-width: 720px; margin: 0 auto; }
+
+    .section { padding: 4.5rem 1.5rem; }
+
+    /* ─── Strategy blocks ─────────────────────────────── */
+    .strategy-block {
+      background: var(--white);
+      border: 1px solid var(--border-card);
+      border-radius: var(--radius);
+      padding: 1.75rem 2rem;
+      margin-bottom: 1.25rem;
+      box-shadow: 0 2px 8px rgba(13,148,136,0.04);
+    }
+
+    .strategy-block p,
+    .strategy-block li { color: var(--text-sub); font-size: 0.95rem; line-height: 1.8; }
+    .strategy-block p + p { margin-top: 0.75rem; }
+
+    .calm-list { list-style: none; padding: 0; }
+    .calm-list li {
+      display: flex; gap: 0.75rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-sub); font-size: 0.95rem; line-height: 1.7;
+      align-items: flex-start;
+    }
+    .calm-list li::before {
+      content: '○';
+      color: var(--teal); font-size: 0.7rem;
+      flex-shrink: 0; margin-top: 0.35rem;
+    }
+
+    /* Numbered structure list */
+    .structure-list { list-style: none; padding: 0; counter-reset: step; }
+    .structure-list li {
+      counter-increment: step;
+      display: flex; gap: 1rem;
+      margin-bottom: 0.75rem;
+      color: var(--text-sub); font-size: 0.95rem; line-height: 1.7;
+      align-items: flex-start;
+    }
+    .structure-list li::before {
+      content: counter(step);
+      display: inline-flex; align-items: center; justify-content: center;
+      min-width: 2rem; height: 2rem;
+      border-radius: 50%;
+      background: var(--sage-mid);
+      border: 2px solid var(--teal);
+      color: var(--teal); font-size: 0.72rem; font-weight: 800;
+      flex-shrink: 0; margin-top: 0.05rem;
+    }
+
+    /* ─── Callout ─────────────────────────────────────── */
+    .callout {
+      background: var(--teal-pale);
+      border: 1px solid var(--sage-dark);
+      border-radius: var(--radius-lg);
+      padding: 2.25rem;
+      text-align: center;
+      margin: 2rem 0;
+    }
+    .callout p {
+      font-size: 1.15rem; font-weight: 600;
+      color: var(--teal-dark); line-height: 1.6;
+    }
+
+    /* ─── Why This Works ──────────────────────────────── */
+    .why-box {
+      background: var(--sage-mid);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 2.25rem; margin-top: 2rem;
+    }
+    .why-list { list-style: none; padding: 0; margin-top: 1rem; }
+    .why-list li {
+      display: flex; gap: 0.875rem;
+      margin-bottom: 0.875rem;
+      color: var(--text-sub); font-size: 0.95rem; line-height: 1.75;
+      align-items: flex-start;
+    }
+    .why-list li::before {
+      content: '✓';
+      color: var(--teal); font-weight: 800; font-size: 0.9rem;
+      flex-shrink: 0; margin-top: 0.05rem;
+    }
+
+    /* ─── CTA Block ───────────────────────────────────── */
+    .cta-block {
+      background: var(--white);
+      border: 1px solid var(--border-card);
+      border-radius: var(--radius-lg);
+      padding: 3rem 2rem;
+      text-align: center; margin-top: 2rem;
+      box-shadow: 0 4px 20px rgba(13,148,136,0.08);
+    }
+    .cta-block h2 { font-size: 1.5rem; margin-bottom: 0.875rem; }
+    .cta-block p {
+      color: var(--text-sub);
+      margin-bottom: 2rem;
+      max-width: 480px; margin-left: auto; margin-right: auto;
+      line-height: 1.7;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 1rem 2.25rem;
+      border-radius: 100px;
+      font-weight: 800; font-size: 0.95rem;
+      text-decoration: none; transition: background 0.2s, transform 0.1s;
+      cursor: pointer; border: none;
+    }
+    .btn:active { transform: scale(0.98); }
+    .btn-teal { background: var(--teal); color: white; }
+    .btn-teal:hover { background: var(--teal-dark); }
+
+    /* ─── Footer ──────────────────────────────────────── */
+    footer {
+      background: var(--teal);
+      color: rgba(255,255,255,0.75);
+      padding: 1.5rem;
+    }
+    .footer-inner {
+      max-width: 960px; margin: 0 auto;
+      display: flex; justify-content: space-between;
+      align-items: center; flex-wrap: wrap; gap: 0.75rem;
+      font-size: 0.875rem;
+    }
+    footer a { color: var(--teal-pale); text-decoration: none; }
+    footer a:hover { color: white; }
+    .footer-tagline { font-size: 0.8rem; color: rgba(255,255,255,0.55); max-width: 300px; }
+
+    @media (max-width: 640px) {
+      .footer-inner { flex-direction: column; text-align: center; }
+      .footer-tagline { max-width: 100%; }
+    }
+  </style>
 </head>
 <body>
 
   <header>
     <nav>
-      <a href="../index.html" class="nav-brand">Website Strategy Catalog</a>
+      <a href="../index.html" class="nav-brand">← Website Strategy Catalog</a>
       <div class="nav-links">
-        <a href="../index.html">Home</a>
-        <a href="../index.html#industries">Industries</a>
+        <a href="../index.html#industries">All Industries</a>
         <a href="https://foundationalmile.com" target="_blank" rel="noopener" class="accent">Foundational Mile</a>
       </div>
     </nav>
@@ -24,10 +255,9 @@
 
   <main>
 
-    <!-- Hero -->
     <section class="hero">
-      <div class="container">
-        <span class="label">Chiropractic Care</span>
+      <div class="hero-inner">
+        <span class="badge">Chiropractic Care</span>
         <h1>Chiropractor Website Strategy</h1>
         <p class="lead">
           Many people searching for a chiropractor have never been to one. They are in pain and they are nervous. The right website reduces that anxiety, explains what to expect, and makes booking as simple as possible.
@@ -35,25 +265,23 @@
       </div>
     </section>
 
-    <!-- Strategy Content -->
     <section class="section">
-      <div class="container" style="max-width:760px;">
-
-        <div class="strategy-grid">
+      <div class="container">
+        <div class="narrow">
 
           <div class="strategy-block">
-            <h3>Primary Audience</h3>
+            <span class="section-label">Primary Audience</span>
             <p>People experiencing back pain, neck pain, headaches, or other physical discomfort — many of whom have never visited a chiropractor. They may be coming from a doctor referral, a friend's recommendation, or a Google search. Anxiety about the unknown is common.</p>
           </div>
 
           <div class="strategy-block">
-            <h3>Primary Goal</h3>
+            <span class="section-label">Primary Goal</span>
             <p>Get a new patient to book a first appointment. That booking is the only outcome that matters. Everything on the website should reduce friction between someone in pain and getting help.</p>
           </div>
 
           <div class="strategy-block">
-            <h3>Secondary Goals</h3>
-            <ul>
+            <span class="section-label">Secondary Goals</span>
+            <ul class="calm-list">
               <li>Educate visitors about the conditions treated and what chiropractic care involves</li>
               <li>Build confidence in the doctor and the practice</li>
               <li>Answer common questions before they have to ask</li>
@@ -62,8 +290,8 @@
           </div>
 
           <div class="strategy-block">
-            <h3>What Patients Care About</h3>
-            <ul>
+            <span class="section-label">What Patients Care About</span>
+            <ul class="calm-list">
               <li>Is this going to hurt?</li>
               <li>What exactly is going to happen at my appointment?</li>
               <li>Will this actually help my specific problem?</li>
@@ -74,8 +302,8 @@
           </div>
 
           <div class="strategy-block">
-            <h3>What Builds Trust</h3>
-            <ul>
+            <span class="section-label">What Builds Trust</span>
+            <ul class="calm-list">
               <li>A warm, approachable photo of the doctor — not just a professional headshot</li>
               <li>A "What to Expect at Your First Visit" section that removes the unknown</li>
               <li>Patient testimonials that mention specific problems resolved</li>
@@ -86,8 +314,8 @@
           </div>
 
           <div class="strategy-block">
-            <h3>What Friction Must Be Removed</h3>
-            <ul>
+            <span class="section-label">What Friction Must Be Removed</span>
+            <ul class="calm-list">
               <li>Medical jargon that requires a degree to understand</li>
               <li>Online booking that is hidden, broken, or redirects to a third-party system with too many steps</li>
               <li>No information about what a first visit involves</li>
@@ -98,13 +326,13 @@
           </div>
 
           <div class="strategy-block">
-            <h3>Recommended Homepage Structure</h3>
+            <span class="section-label">Recommended Homepage Structure</span>
             <ol class="structure-list">
-              <li>Calming headline focused on relief, not technique — "We help people get out of pain and stay that way"</li>
+              <li>Calming headline focused on relief, not technique</li>
               <li>Primary CTA: "Book Your First Visit" — visible immediately</li>
               <li>Common conditions treated — in plain, recognizable language</li>
               <li>What to Expect — a short, honest walk-through of the first visit</li>
-              <li>Meet the Doctor — warm photo, brief personal story, credentials in plain language</li>
+              <li>Meet the Doctor — warm photo, brief personal story, credentials simply stated</li>
               <li>Patient testimonials — specific, real, and focused on outcomes</li>
               <li>Insurance and pricing overview — even a general statement reduces anxiety</li>
               <li>Booking section — phone number and online booking side by side</li>
@@ -112,14 +340,14 @@
           </div>
 
           <div class="strategy-block">
-            <h3>Call-to-Action Strategy</h3>
+            <span class="section-label">Call-to-Action Strategy</span>
             <p>The primary CTA is "Book Your First Visit" — not "Schedule an Appointment" or "Request a Consultation." The word "first" acknowledges the person is new and signals that this is a normal, expected thing to do.</p>
-            <p class="mt-4">Consider adding a brief note alongside the CTA: "Your first visit includes a full assessment and treatment plan — no commitment required." This lowers the perceived risk of booking.</p>
+            <p>Consider adding a brief note alongside the CTA: "Your first visit includes a full assessment and treatment plan — no commitment required." This lowers the perceived risk of booking.</p>
           </div>
 
           <div class="strategy-block">
-            <h3>What NOT to Focus On</h3>
-            <ul>
+            <span class="section-label">What NOT to Focus On</span>
+            <ul class="calm-list">
               <li>Detailed anatomy diagrams or spine illustrations as the hero image — they increase anxiety</li>
               <li>Long lists of techniques and certifications without explaining what they mean for the patient</li>
               <li>Busy office photos that make the space feel clinical and impersonal</li>
@@ -128,29 +356,33 @@
             </ul>
           </div>
 
-        </div>
+          <!-- Callout -->
+          <div class="callout">
+            <p>The most important thing a chiropractor's website can say is: here's exactly what will happen when you come in. That one answer removes the biggest barrier to booking.</p>
+          </div>
 
-        <!-- Why This Works -->
-        <div class="card mt-12">
-          <span class="label">Why This Works</span>
-          <ul class="why-list mt-4">
-            <li>Anxiety is the primary barrier for new chiropractic patients. A website that removes the unknown — by explaining what happens, step by step — directly addresses the thing keeping people from booking.</li>
-            <li>Pain is urgent. When someone is hurting, they want help now. A booking process with too many steps loses the lead to whoever makes it easier.</li>
-            <li>Patients choose a doctor, not a clinic. The doctor's approachability, communicated through photo and tone, matters more than any credential list.</li>
-            <li>Plain language outperforms technical language every time. If a patient can't understand what you offer in 30 seconds, they move on.</li>
-            <li>Testimonials focused on outcomes — "I got rid of my three-year headache" — are more persuasive than five-star ratings alone.</li>
-          </ul>
-        </div>
+          <!-- Why This Works -->
+          <div class="why-box">
+            <span class="section-label">Why This Works</span>
+            <ul class="why-list">
+              <li>Anxiety is the primary barrier for new chiropractic patients. A website that removes the unknown — by explaining what happens, step by step — directly addresses the thing keeping people from booking.</li>
+              <li>Pain is urgent. When someone is hurting, they want help now. A booking process with too many steps loses the lead to whoever makes it easier.</li>
+              <li>Patients choose a doctor, not a clinic. The doctor's approachability, communicated through photo and tone, matters more than any credential list.</li>
+              <li>Plain language outperforms technical language every time. If a patient can't understand what you offer in 30 seconds, they move on.</li>
+              <li>Testimonials focused on outcomes — "I got rid of my three-year headache" — are more persuasive than five-star ratings alone.</li>
+            </ul>
+          </div>
 
-        <!-- CTA Block -->
-        <div class="cta-block">
-          <h2>Want help figuring out the right approach for your practice?</h2>
-          <p>Foundational Mile helps small businesses and healthcare practices think through what they actually need — before spending money going in the wrong direction.</p>
-          <a href="https://foundationalmile.com/#contact" target="_blank" rel="noopener" class="btn btn-primary">
-            Talk with Foundational Mile
-          </a>
-        </div>
+          <!-- CTA Block -->
+          <div class="cta-block">
+            <h2>Want help figuring out the right approach for your practice?</h2>
+            <p>Foundational Mile helps small businesses and healthcare practices think through what they actually need — before spending money going in the wrong direction.</p>
+            <a href="https://foundationalmile.com/#contact" target="_blank" rel="noopener" class="btn btn-teal">
+              Talk with Foundational Mile
+            </a>
+          </div>
 
+        </div>
       </div>
     </section>
 

@@ -4,19 +4,257 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Ministry and church website strategy. Learn how to welcome first-time visitors, communicate your mission, and reduce the barriers between curiosity and connection." />
-  <meta name="theme-color" content="#0f172a" />
-  <link rel="icon" href="../assets/images/favicon.ico" />
+  <meta name="theme-color" content="#9c6b3a" />
   <title>Ministry Website Strategy — Website Strategy Catalog</title>
-  <link rel="stylesheet" href="../assets/css/styles.css" />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@400;500;600&display=swap');
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    :root {
+      --cream:      #faf8f5;
+      --cream-alt:  #f2ebe3;
+      --warm-dark:  #3d2b1f;
+      --warm-mid:   #7a5c45;
+      --warm-light: #b8977e;
+      --gold:       #9c6b3a;
+      --gold-light: #c4945c;
+      --gold-pale:  #f5ede4;
+      --border:     #e6d5c4;
+      --border-soft:#f0e4d7;
+      --radius:     0.5rem;
+      --radius-lg:  1rem;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--cream);
+      color: var(--warm-dark);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ─── Header ─────────────────────────────────────── */
+    header {
+      background: var(--cream);
+      border-bottom: 1px solid var(--border);
+      position: sticky; top: 0; z-index: 50;
+    }
+    nav {
+      max-width: 900px; margin: 0 auto;
+      padding: 1.1rem 1.5rem;
+      display: flex; align-items: center;
+      justify-content: space-between; flex-wrap: wrap; gap: 0.75rem;
+    }
+    .nav-brand {
+      font-family: 'Lora', Georgia, serif;
+      font-size: 0.9rem; font-weight: 600;
+      color: var(--gold); text-decoration: none;
+      font-style: italic;
+    }
+    .nav-brand:hover { color: var(--gold-light); }
+    .nav-links { display: flex; gap: 1.5rem; font-size: 0.85rem; flex-wrap: wrap; }
+    .nav-links a { color: var(--warm-mid); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--warm-dark); }
+    .nav-links a.accent { color: var(--gold); font-weight: 500; }
+
+    /* ─── Hero ───────────────────────────────────────── */
+    .hero {
+      background: var(--cream-alt);
+      padding: 6rem 1.5rem 5rem;
+      border-bottom: 1px solid var(--border);
+      text-align: center;
+    }
+    .hero-inner { max-width: 680px; margin: 0 auto; }
+
+    .eyebrow {
+      font-family: 'Lora', Georgia, serif;
+      font-size: 0.85rem; font-weight: 500;
+      font-style: italic; color: var(--gold);
+      letter-spacing: 0.04em;
+      margin-bottom: 1.25rem; display: block;
+    }
+
+    h1 {
+      font-family: 'Lora', Georgia, serif;
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 700; color: var(--warm-dark);
+      line-height: 1.25; margin-bottom: 1.25rem;
+    }
+
+    h2 {
+      font-family: 'Lora', Georgia, serif;
+      font-size: clamp(1.4rem, 3.5vw, 1.875rem);
+      font-weight: 600; color: var(--warm-dark);
+      line-height: 1.35; margin-bottom: 1rem;
+    }
+
+    .section-label {
+      font-size: 0.7rem; font-weight: 600;
+      color: var(--gold);
+      text-transform: uppercase; letter-spacing: 0.14em;
+      margin-bottom: 0.875rem; display: block;
+    }
+
+    .lead {
+      font-size: 1.1rem; color: var(--warm-mid);
+      line-height: 1.8; max-width: 580px; margin: 0 auto;
+    }
+
+    /* ─── Layout ──────────────────────────────────────── */
+    .container { max-width: 900px; margin: 0 auto; padding: 0 1.5rem; }
+    .narrow    { max-width: 680px; margin: 0 auto; }
+
+    .section { padding: 5rem 1.5rem; }
+
+    /* ─── Divider ─────────────────────────────────────── */
+    .divider {
+      border: none;
+      border-top: 1px dashed var(--border);
+      margin: 2.5rem 0;
+    }
+
+    /* ─── Strategy blocks ─────────────────────────────── */
+    .strategy-block { margin-bottom: 2.75rem; }
+
+    .strategy-block p,
+    .strategy-block li { color: var(--warm-mid); font-size: 0.975rem; line-height: 1.8; }
+    .strategy-block p + p { margin-top: 0.875rem; }
+
+    .warm-list { list-style: none; padding: 0; }
+    .warm-list li {
+      display: flex; gap: 0.875rem;
+      margin-bottom: 0.5rem;
+      color: var(--warm-mid); font-size: 0.975rem; line-height: 1.75;
+      align-items: flex-start;
+    }
+    .warm-list li::before {
+      content: '–';
+      color: var(--gold-light);
+      font-weight: 600; flex-shrink: 0;
+      margin-top: 0.05rem;
+    }
+
+    /* Numbered structure list */
+    .structure-list { list-style: none; padding: 0; counter-reset: step; }
+    .structure-list li {
+      counter-increment: step;
+      display: flex; gap: 1rem;
+      margin-bottom: 0.7rem;
+      color: var(--warm-mid); font-size: 0.975rem; line-height: 1.7;
+      align-items: flex-start;
+    }
+    .structure-list li::before {
+      content: counter(step);
+      display: inline-flex; align-items: center; justify-content: center;
+      min-width: 1.75rem; height: 1.75rem;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      background: var(--gold-pale);
+      color: var(--gold); font-size: 0.72rem; font-weight: 600;
+      flex-shrink: 0; margin-top: 0.1rem;
+    }
+
+    /* ─── Scripture-style callout ─────────────────────── */
+    .callout {
+      border-left: 3px solid var(--gold);
+      padding: 1.5rem 2rem;
+      margin: 3rem 0;
+      background: var(--gold-pale);
+      border-radius: 0 var(--radius) var(--radius) 0;
+    }
+    .callout-quote {
+      font-family: 'Lora', Georgia, serif;
+      font-size: 1.2rem; font-style: italic;
+      color: var(--warm-dark); line-height: 1.65;
+      margin-bottom: 0.5rem;
+    }
+    .callout-sub { font-size: 0.9rem; color: var(--warm-mid); }
+
+    /* ─── Why This Works ──────────────────────────────── */
+    .why-box {
+      background: var(--cream-alt);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 2.25rem; margin-top: 3rem;
+    }
+    .why-list { list-style: none; padding: 0; margin-top: 1rem; }
+    .why-list li {
+      display: flex; gap: 0.75rem;
+      margin-bottom: 0.875rem;
+      color: var(--warm-mid); font-size: 0.975rem; line-height: 1.75;
+      align-items: flex-start;
+    }
+    .why-list li::before {
+      content: '✦';
+      color: var(--gold-light); font-size: 0.6rem;
+      flex-shrink: 0; margin-top: 0.45rem;
+    }
+
+    /* ─── CTA Block ───────────────────────────────────── */
+    .cta-block {
+      background: var(--cream-alt);
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--gold);
+      border-radius: var(--radius-lg);
+      padding: 3rem 2rem;
+      text-align: center; margin-top: 3.5rem;
+    }
+    .cta-block h2 { font-size: 1.5rem; margin-bottom: 0.875rem; }
+    .cta-block p {
+      color: var(--warm-mid);
+      margin-bottom: 2rem;
+      max-width: 480px; margin-left: auto; margin-right: auto;
+      line-height: 1.7;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.875rem 2.25rem;
+      border-radius: var(--radius);
+      font-weight: 600; font-size: 0.95rem;
+      text-decoration: none; transition: background 0.2s;
+      cursor: pointer; border: none;
+    }
+    .btn-warm {
+      background: var(--gold); color: white;
+    }
+    .btn-warm:hover { background: var(--gold-light); }
+
+    /* ─── Footer ──────────────────────────────────────── */
+    footer {
+      background: var(--warm-dark);
+      color: var(--warm-light);
+      padding: 1.75rem 1.5rem;
+    }
+    .footer-inner {
+      max-width: 900px; margin: 0 auto;
+      display: flex; justify-content: space-between;
+      align-items: center; flex-wrap: wrap; gap: 0.75rem;
+      font-size: 0.875rem;
+    }
+    footer a { color: var(--gold-light); text-decoration: none; }
+    footer a:hover { color: white; }
+    .footer-tagline {
+      font-family: 'Lora', Georgia, serif;
+      font-style: italic; font-size: 0.85rem;
+      color: var(--warm-mid); max-width: 300px;
+    }
+
+    @media (max-width: 640px) {
+      .footer-inner { flex-direction: column; text-align: center; }
+      .footer-tagline { max-width: 100%; }
+    }
+  </style>
 </head>
 <body>
 
   <header>
     <nav>
-      <a href="../index.html" class="nav-brand">Website Strategy Catalog</a>
+      <a href="../index.html" class="nav-brand">← Website Strategy Catalog</a>
       <div class="nav-links">
-        <a href="../index.html">Home</a>
-        <a href="../index.html#industries">Industries</a>
+        <a href="../index.html#industries">All Industries</a>
         <a href="https://foundationalmile.com" target="_blank" rel="noopener" class="accent">Foundational Mile</a>
       </div>
     </nav>
@@ -24,10 +262,9 @@
 
   <main>
 
-    <!-- Hero -->
     <section class="hero">
-      <div class="container">
-        <span class="label">Ministry &amp; Church</span>
+      <div class="hero-inner">
+        <span class="eyebrow">Ministry &amp; Church</span>
         <h1>Ministry Website Strategy</h1>
         <p class="lead">
           A ministry website is not selling a service. It is extending a welcome. The right strategy helps someone feel like they belong — before they ever walk through the door.
@@ -35,25 +272,27 @@
       </div>
     </section>
 
-    <!-- Strategy Content -->
     <section class="section">
-      <div class="container" style="max-width:760px;">
-
-        <div class="strategy-grid">
+      <div class="container">
+        <div class="narrow">
 
           <div class="strategy-block">
-            <h3>Primary Audience</h3>
+            <span class="section-label">Primary Audience</span>
             <p>People who are curious about faith, exploring different churches, or new to the area. They may be nervous, skeptical, or simply unfamiliar with what to expect. They are not insiders — yet.</p>
           </div>
 
+          <hr class="divider" />
+
           <div class="strategy-block">
-            <h3>Primary Goal</h3>
+            <span class="section-label">Primary Goal</span>
             <p>Help a first-time visitor feel welcome enough to show up in person. That single outcome should shape every page, every word, and every decision on the site.</p>
           </div>
 
+          <hr class="divider" />
+
           <div class="strategy-block">
-            <h3>Secondary Goals</h3>
-            <ul>
+            <span class="section-label">Secondary Goals</span>
+            <ul class="warm-list">
               <li>Keep current members informed of upcoming events and announcements</li>
               <li>Communicate the ministry's mission, vision, and values</li>
               <li>Provide access to sermons, teaching archives, or devotional content</li>
@@ -61,9 +300,11 @@
             </ul>
           </div>
 
+          <hr class="divider" />
+
           <div class="strategy-block">
-            <h3>What Visitors Care About</h3>
-            <ul>
+            <span class="section-label">What Visitors Care About</span>
+            <ul class="warm-list">
               <li>Is this place for someone like me?</li>
               <li>What do services actually look like? Will I feel out of place?</li>
               <li>What time do things start? Where is it?</li>
@@ -72,9 +313,11 @@
             </ul>
           </div>
 
+          <hr class="divider" />
+
           <div class="strategy-block">
-            <h3>What Builds Trust</h3>
-            <ul>
+            <span class="section-label">What Builds Trust</span>
+            <ul class="warm-list">
               <li>Real photos of real people — not stock photography</li>
               <li>A personal welcome message from the lead pastor</li>
               <li>Service times and location prominently displayed, not buried</li>
@@ -84,9 +327,11 @@
             </ul>
           </div>
 
+          <hr class="divider" />
+
           <div class="strategy-block">
-            <h3>What Friction Must Be Removed</h3>
-            <ul>
+            <span class="section-label">What Friction Must Be Removed</span>
+            <ul class="warm-list">
               <li>Service times that are hard to find or missing entirely</li>
               <li>Dense theological language that feels exclusive to insiders</li>
               <li>No explanation of what a visit looks like</li>
@@ -96,8 +341,10 @@
             </ul>
           </div>
 
+          <hr class="divider" />
+
           <div class="strategy-block">
-            <h3>Recommended Homepage Structure</h3>
+            <span class="section-label">Recommended Homepage Structure</span>
             <ol class="structure-list">
               <li>Warm welcome statement — who you are and who is welcome</li>
               <li>Service times and location — visible immediately, not scrolled to</li>
@@ -109,15 +356,19 @@
             </ol>
           </div>
 
-          <div class="strategy-block">
-            <h3>Call-to-Action Strategy</h3>
-            <p>The primary CTA should lower the barrier to a first visit — not ask for commitment. Use language like "Plan Your Visit" or "I'm New Here" rather than "Join Us" or "Become a Member." The goal is an in-person visit, not a sign-up.</p>
-            <p class="mt-4">A secondary CTA can invite people to watch a recent sermon or message before they come, which helps reduce the unknown.</p>
-          </div>
+          <hr class="divider" />
 
           <div class="strategy-block">
-            <h3>What NOT to Focus On</h3>
-            <ul>
+            <span class="section-label">Call-to-Action Strategy</span>
+            <p>The primary CTA should lower the barrier to a first visit — not ask for commitment. Use language like "Plan Your Visit" or "I'm New Here" rather than "Join Us" or "Become a Member." The goal is an in-person visit, not a sign-up.</p>
+            <p>A secondary CTA can invite people to watch a recent sermon or message before they come, which helps reduce the unknown.</p>
+          </div>
+
+          <hr class="divider" />
+
+          <div class="strategy-block">
+            <span class="section-label">What NOT to Focus On</span>
+            <ul class="warm-list">
               <li>Long doctrinal statements or theological position papers on the homepage</li>
               <li>Complex church organizational charts</li>
               <li>Insider language that assumes familiarity with church culture</li>
@@ -126,29 +377,34 @@
             </ul>
           </div>
 
-        </div>
+          <!-- Callout -->
+          <div class="callout">
+            <p class="callout-quote">"The goal is not to impress. It is to welcome."</p>
+            <p class="callout-sub">A first-time visitor needs to feel like they belong before they ever walk through the door.</p>
+          </div>
 
-        <!-- Why This Works -->
-        <div class="card mt-12">
-          <span class="label">Why This Works</span>
-          <ul class="why-list mt-4">
-            <li>A first-time visitor's biggest fear is feeling out of place. Removing that uncertainty is the single most valuable thing a ministry website can do.</li>
-            <li>Most people research a church online before they visit in person. What they find shapes whether they show up at all.</li>
-            <li>"Plan Your Visit" converts better than "Join Us" because it acknowledges that the person is not yet committed — and that's okay.</li>
-            <li>Real photos of real people build trust in a way that no amount of well-written copy can. Community is visual.</li>
-            <li>When service times and location require effort to find, many visitors simply move on to the next option.</li>
-          </ul>
-        </div>
+          <!-- Why This Works -->
+          <div class="why-box">
+            <span class="section-label">Why This Works</span>
+            <ul class="why-list">
+              <li>A first-time visitor's biggest fear is feeling out of place. Removing that uncertainty is the single most valuable thing a ministry website can do.</li>
+              <li>Most people research a church online before they visit in person. What they find shapes whether they show up at all.</li>
+              <li>"Plan Your Visit" converts better than "Join Us" because it acknowledges that the person is not yet committed — and that's okay.</li>
+              <li>Real photos of real people build trust in a way that no amount of well-written copy can. Community is visual.</li>
+              <li>When service times and location require effort to find, many visitors simply move on to the next option.</li>
+            </ul>
+          </div>
 
-        <!-- CTA Block -->
-        <div class="cta-block">
-          <h2>Want help figuring out the right approach for your ministry?</h2>
-          <p>Foundational Mile works with nonprofits and ministries to build digital presences that actually serve their communities — not just exist online.</p>
-          <a href="https://foundationalmile.com/#contact" target="_blank" rel="noopener" class="btn btn-primary">
-            Talk with Foundational Mile
-          </a>
-        </div>
+          <!-- CTA Block -->
+          <div class="cta-block">
+            <h2>Want help figuring out the right approach for your ministry?</h2>
+            <p>Foundational Mile works with nonprofits and ministries to build digital presences that actually serve their communities — not just exist online.</p>
+            <a href="https://foundationalmile.com/#contact" target="_blank" rel="noopener" class="btn btn-warm">
+              Talk with Foundational Mile
+            </a>
+          </div>
 
+        </div>
       </div>
     </section>
 

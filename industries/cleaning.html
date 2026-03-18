@@ -4,19 +4,229 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Cleaning company website strategy. Learn how to build trust fast, communicate what's included, and remove every barrier to booking." />
-  <meta name="theme-color" content="#0f172a" />
-  <link rel="icon" href="../assets/images/favicon.ico" />
+  <meta name="theme-color" content="#0ea5e9" />
   <title>Cleaning Company Website Strategy — Website Strategy Catalog</title>
-  <link rel="stylesheet" href="../assets/css/styles.css" />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    :root {
+      --sky:       #0ea5e9;
+      --sky-dark:  #0284c7;
+      --sky-light: #e0f2fe;
+      --sky-pale:  #f0f9ff;
+      --text:      #1e293b;
+      --text-sub:  #475569;
+      --text-mute: #94a3b8;
+      --border:    #e2e8f0;
+      --border-b:  #bae6fd;
+      --radius:    0.5rem;
+      --radius-lg: 1rem;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: #ffffff;
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ─── Header ─────────────────────────────────────── */
+    header {
+      background: #ffffff;
+      border-bottom: 2px solid var(--sky-light);
+      position: sticky; top: 0; z-index: 50;
+      box-shadow: 0 2px 8px rgba(14,165,233,0.08);
+    }
+    nav {
+      max-width: 960px; margin: 0 auto;
+      padding: 1rem 1.5rem;
+      display: flex; align-items: center;
+      justify-content: space-between; flex-wrap: wrap; gap: 0.75rem;
+    }
+    .nav-brand {
+      font-size: 0.9rem; font-weight: 700;
+      color: var(--sky); text-decoration: none;
+    }
+    .nav-brand:hover { color: var(--sky-dark); }
+    .nav-links { display: flex; gap: 1.5rem; font-size: 0.85rem; flex-wrap: wrap; }
+    .nav-links a { color: var(--text-sub); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--sky); }
+    .nav-links a.accent { color: var(--sky); font-weight: 600; }
+    .nav-links a.accent:hover { color: var(--sky-dark); }
+
+    /* ─── Hero ───────────────────────────────────────── */
+    .hero {
+      background: linear-gradient(160deg, #f0f9ff 0%, #ffffff 55%);
+      padding: 4.5rem 1.5rem 4rem;
+      border-bottom: 1px solid var(--border-b);
+    }
+    .hero-inner { max-width: 740px; margin: 0 auto; }
+
+    .badge {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      background: var(--sky-light); color: var(--sky-dark);
+      font-size: 0.75rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.1em;
+      padding: 0.3rem 0.875rem; border-radius: 100px;
+      margin-bottom: 1.25rem;
+    }
+
+    h1 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 800; color: var(--text);
+      line-height: 1.15; margin-bottom: 1rem;
+    }
+
+    h2 {
+      font-size: clamp(1.4rem, 3.5vw, 1.875rem);
+      font-weight: 700; color: var(--text);
+      line-height: 1.3; margin-bottom: 0.875rem;
+    }
+
+    .section-label {
+      font-size: 0.7rem; font-weight: 700;
+      color: var(--sky-dark);
+      text-transform: uppercase; letter-spacing: 0.12em;
+      margin-bottom: 0.75rem;
+      display: block;
+    }
+
+    .lead {
+      font-size: 1.1rem; color: var(--text-sub); line-height: 1.75;
+      max-width: 620px;
+    }
+
+    /* ─── Layout ──────────────────────────────────────── */
+    .container { max-width: 960px; margin: 0 auto; padding: 0 1.5rem; }
+    .narrow    { max-width: 720px; margin: 0 auto; }
+
+    .section     { padding: 4rem 1.5rem; }
+    .section-alt { background: var(--sky-pale); }
+
+    /* ─── Strategy blocks ─────────────────────────────── */
+    .strategy-block {
+      margin-bottom: 2.25rem;
+      padding-bottom: 2.25rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .strategy-block:last-child { border-bottom: none; padding-bottom: 0; margin-bottom: 0; }
+
+    .strategy-block p,
+    .strategy-block li { color: var(--text-sub); font-size: 0.95rem; line-height: 1.75; }
+    .strategy-block p + p { margin-top: 0.75rem; }
+
+    /* Checklist bullets */
+    .check-list { list-style: none; padding: 0; }
+    .check-list li {
+      display: flex; gap: 0.75rem;
+      margin-bottom: 0.45rem;
+      color: var(--text-sub); font-size: 0.95rem; line-height: 1.65;
+      align-items: flex-start;
+    }
+    .check-list li::before {
+      content: '✓';
+      color: var(--sky); font-weight: 800;
+      flex-shrink: 0; margin-top: 0.05rem;
+    }
+
+    /* Numbered structure list */
+    .structure-list { list-style: none; padding: 0; counter-reset: step; }
+    .structure-list li {
+      counter-increment: step;
+      display: flex; gap: 1rem;
+      margin-bottom: 0.6rem;
+      color: var(--text-sub); font-size: 0.95rem; line-height: 1.65;
+      align-items: flex-start;
+    }
+    .structure-list li::before {
+      content: counter(step);
+      display: inline-flex; align-items: center; justify-content: center;
+      min-width: 1.75rem; height: 1.75rem;
+      border-radius: 50%;
+      background: var(--sky); color: white;
+      font-size: 0.7rem; font-weight: 800; flex-shrink: 0;
+      margin-top: 0.1rem;
+    }
+
+    /* ─── Why This Works ──────────────────────────────── */
+    .why-box {
+      background: var(--sky-pale);
+      border: 1px solid var(--border-b);
+      border-left: 4px solid var(--sky);
+      border-radius: var(--radius-lg);
+      padding: 2rem; margin-top: 3rem;
+    }
+    .why-list { list-style: none; padding: 0; margin-top: 1rem; }
+    .why-list li {
+      display: flex; gap: 0.75rem;
+      margin-bottom: 0.75rem;
+      color: var(--text-sub); font-size: 0.95rem; line-height: 1.7;
+    }
+    .why-list li::before { content: '→'; color: var(--sky); font-weight: 700; flex-shrink: 0; }
+
+    /* ─── CTA Block ───────────────────────────────────── */
+    .cta-block {
+      background: var(--sky);
+      border-radius: var(--radius-lg);
+      padding: 3rem 2rem;
+      text-align: center; margin-top: 3rem;
+    }
+    .cta-block h2 { color: white; font-size: 1.5rem; margin-bottom: 0.75rem; }
+    .cta-block p {
+      color: rgba(255,255,255,0.88);
+      margin-bottom: 1.75rem;
+      max-width: 480px; margin-left: auto; margin-right: auto;
+      line-height: 1.65;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.875rem 2rem;
+      border-radius: var(--radius);
+      font-weight: 700; font-size: 0.95rem;
+      text-decoration: none;
+      transition: background 0.2s;
+      cursor: pointer; border: none;
+    }
+    .btn-white { background: white; color: var(--sky); }
+    .btn-white:hover { background: var(--sky-pale); }
+    .btn-sky { background: var(--sky); color: white; }
+    .btn-sky:hover { background: var(--sky-dark); }
+
+    /* ─── Footer ──────────────────────────────────────── */
+    footer {
+      background: var(--text);
+      color: #94a3b8;
+      padding: 1.5rem;
+      margin-top: 0;
+    }
+    .footer-inner {
+      max-width: 960px; margin: 0 auto;
+      display: flex; justify-content: space-between;
+      align-items: center; flex-wrap: wrap; gap: 0.75rem;
+      font-size: 0.875rem;
+    }
+    footer a { color: #bae6fd; text-decoration: none; }
+    footer a:hover { color: white; }
+    .footer-tagline { font-size: 0.8rem; color: #64748b; max-width: 280px; }
+
+    @media (max-width: 640px) {
+      .footer-inner { flex-direction: column; text-align: center; }
+      .footer-tagline { max-width: 100%; }
+    }
+  </style>
 </head>
 <body>
 
   <header>
     <nav>
-      <a href="../index.html" class="nav-brand">Website Strategy Catalog</a>
+      <a href="../index.html" class="nav-brand">← Website Strategy Catalog</a>
       <div class="nav-links">
-        <a href="../index.html">Home</a>
-        <a href="../index.html#industries">Industries</a>
+        <a href="../index.html#industries">All Industries</a>
         <a href="https://foundationalmile.com" target="_blank" rel="noopener" class="accent">Foundational Mile</a>
       </div>
     </nav>
@@ -24,10 +234,9 @@
 
   <main>
 
-    <!-- Hero -->
     <section class="hero">
-      <div class="container">
-        <span class="label">Cleaning Services</span>
+      <div class="hero-inner">
+        <span class="badge">Cleaning Services</span>
         <h1>Cleaning Company Website Strategy</h1>
         <p class="lead">
           Someone booking a cleaning service wants it fast and easy. They want to know the price, trust that the team is reliable, and book without jumping through hoops. Friction kills conversions here more than anywhere else.
@@ -35,25 +244,23 @@
       </div>
     </section>
 
-    <!-- Strategy Content -->
     <section class="section">
-      <div class="container" style="max-width:760px;">
-
-        <div class="strategy-grid">
+      <div class="container">
+        <div class="narrow">
 
           <div class="strategy-block">
-            <h3>Primary Audience</h3>
+            <span class="section-label">Primary Audience</span>
             <p>Busy homeowners, renters, and small business owners who need regular or one-time cleaning. They are often making a fast decision — they have a specific need, limited time, and low patience for complicated websites.</p>
           </div>
 
           <div class="strategy-block">
-            <h3>Primary Goal</h3>
+            <span class="section-label">Primary Goal</span>
             <p>Get a booking or a quote request. This audience makes decisions quickly. If the site does not answer their key questions and give them an easy path to act, they close the tab and call the next result on Google.</p>
           </div>
 
           <div class="strategy-block">
-            <h3>Secondary Goals</h3>
-            <ul>
+            <span class="section-label">Secondary Goals</span>
+            <ul class="check-list">
               <li>Build immediate trust with someone who is letting strangers into their home</li>
               <li>Communicate clearly what is included in each service type</li>
               <li>Establish reliability through reviews and consistent branding</li>
@@ -62,8 +269,8 @@
           </div>
 
           <div class="strategy-block">
-            <h3>What Customers Care About</h3>
-            <ul>
+            <span class="section-label">What Customers Care About</span>
+            <ul class="check-list">
               <li>Can I trust these people in my home?</li>
               <li>How much does it cost?</li>
               <li>What exactly is included — floors, bathrooms, inside the fridge?</li>
@@ -74,8 +281,8 @@
           </div>
 
           <div class="strategy-block">
-            <h3>What Builds Trust</h3>
-            <ul>
+            <span class="section-label">What Builds Trust</span>
+            <ul class="check-list">
               <li>Reviews — lots of them, recent, and from real people</li>
               <li>A clear statement about background checks or team vetting</li>
               <li>Photos of clean results, and ideally the team themselves</li>
@@ -86,19 +293,19 @@
           </div>
 
           <div class="strategy-block">
-            <h3>What Friction Must Be Removed</h3>
-            <ul>
+            <span class="section-label">What Friction Must Be Removed</span>
+            <ul class="check-list">
               <li>No pricing information — forcing every visitor to call just to get a number</li>
               <li>Booking that requires too many steps or account creation</li>
               <li>Vague service descriptions that leave questions unanswered</li>
               <li>No reviews, or only generic five-star ratings with no text</li>
-              <li>A phone number that's hard to find</li>
-              <li>A site that doesn't load well on mobile — most of this audience books from their phone</li>
+              <li>A phone number that is hard to find</li>
+              <li>A site that does not load well on mobile — most of this audience books from their phone</li>
             </ul>
           </div>
 
           <div class="strategy-block">
-            <h3>Recommended Homepage Structure</h3>
+            <span class="section-label">Recommended Homepage Structure</span>
             <ol class="structure-list">
               <li>Clear headline: what you do, where, and for whom</li>
               <li>Primary CTA: "Get a Free Quote" or "Book Now" — immediately visible</li>
@@ -112,45 +319,44 @@
           </div>
 
           <div class="strategy-block">
-            <h3>Call-to-Action Strategy</h3>
+            <span class="section-label">Call-to-Action Strategy</span>
             <p>Use two CTAs: "Book Now" for people who are ready, and "Get a Free Quote" for people who want a price before committing. Both should be visible on the homepage without scrolling.</p>
-            <p class="mt-4">The booking or quote form should be short — name, email, phone, and what service they need. Every extra field reduces completions. You can gather the rest after the lead is in.</p>
+            <p>The booking or quote form should be short — name, email, phone, and what service they need. Every extra field reduces completions. You can gather the rest after the lead is in.</p>
           </div>
 
           <div class="strategy-block">
-            <h3>What NOT to Focus On</h3>
-            <ul>
+            <span class="section-label">What NOT to Focus On</span>
+            <ul class="check-list">
               <li>Long company history or founder story — save that for the About page</li>
               <li>Awards and industry memberships as a primary trust signal</li>
               <li>Complex navigation with too many categories</li>
               <li>Blog content about cleaning tips — this audience is not here to learn, they're here to hire</li>
-              <li>A gallery of photos that loads slowly and delays access to the booking form</li>
+              <li>A photo gallery that loads slowly and delays access to the booking form</li>
             </ul>
           </div>
 
-        </div>
+          <!-- Why This Works -->
+          <div class="why-box">
+            <span class="section-label">Why This Works</span>
+            <ul class="why-list">
+              <li>Cleaning service buyers have high intent and low patience. They've already decided they want to hire someone — the site just needs to get out of their way.</li>
+              <li>Letting a stranger into your home is a trust decision. Reviews and background-check statements address the biggest objection before the visitor even has to ask.</li>
+              <li>Most people booking a cleaning service are on their phone, often in a hurry. A mobile-friendly, fast-loading site with a short booking form dramatically increases conversions.</li>
+              <li>Hiding pricing does not get more calls — it loses visitors to competitors who are upfront. Even a range builds more trust than silence.</li>
+              <li>A satisfaction guarantee removes risk. When the cost of trying is low, more people convert.</li>
+            </ul>
+          </div>
 
-        <!-- Why This Works -->
-        <div class="card mt-12">
-          <span class="label">Why This Works</span>
-          <ul class="why-list mt-4">
-            <li>Cleaning service buyers have high intent and low patience. They've already decided they want to hire someone — the site just needs to get out of their way.</li>
-            <li>Letting a stranger into your home is a trust decision. Reviews and background-check statements address the single biggest objection before the visitor even has to ask.</li>
-            <li>Most people booking a cleaning service are on their phone, often in a hurry. A mobile-friendly, fast-loading site with a short booking form dramatically increases conversions.</li>
-            <li>Hiding pricing does not get more calls — it loses visitors to competitors who are upfront. Even a range builds more trust than silence.</li>
-            <li>A satisfaction guarantee removes risk. When the cost of trying is low, more people convert.</li>
-          </ul>
-        </div>
+          <!-- CTA Block -->
+          <div class="cta-block">
+            <h2>Want help figuring out the right approach for your business?</h2>
+            <p>Foundational Mile helps small businesses think through what they actually need — before spending money going in the wrong direction.</p>
+            <a href="https://foundationalmile.com/#contact" target="_blank" rel="noopener" class="btn btn-white">
+              Talk with Foundational Mile
+            </a>
+          </div>
 
-        <!-- CTA Block -->
-        <div class="cta-block">
-          <h2>Want help figuring out the right approach for your business?</h2>
-          <p>Foundational Mile helps small businesses think through what they actually need — before spending money going in the wrong direction.</p>
-          <a href="https://foundationalmile.com/#contact" target="_blank" rel="noopener" class="btn btn-primary">
-            Talk with Foundational Mile
-          </a>
         </div>
-
       </div>
     </section>
 

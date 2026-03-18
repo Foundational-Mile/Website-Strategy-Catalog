@@ -4,19 +4,233 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Construction contractor website strategy. Learn how to build trust through past work, remove doubt, and make it easy for homeowners to request a quote." />
-  <meta name="theme-color" content="#0f172a" />
-  <link rel="icon" href="../assets/images/favicon.ico" />
+  <meta name="theme-color" content="#f59e0b" />
   <title>Construction Contractor Website Strategy — Website Strategy Catalog</title>
-  <link rel="stylesheet" href="../assets/css/styles.css" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    :root {
+      --black:   #0d0d0d;
+      --dark:    #141414;
+      --dark2:   #1c1c1c;
+      --card:    #1a1a1a;
+      --yellow:  #f59e0b;
+      --yellow2: #fbbf24;
+      --text:    #f4f4f5;
+      --text-sub:#a1a1aa;
+      --text-dim:#71717a;
+      --border:  #2a2a2a;
+      --border-y:rgba(245,158,11,0.3);
+      --radius:  0.25rem;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+      background: var(--black);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ─── Header ─────────────────────────────────────── */
+    header {
+      background: var(--dark);
+      border-bottom: 2px solid var(--yellow);
+      position: sticky; top: 0; z-index: 50;
+    }
+    nav {
+      max-width: 1000px; margin: 0 auto;
+      padding: 1rem 1.5rem;
+      display: flex; align-items: center;
+      justify-content: space-between; flex-wrap: wrap; gap: 0.75rem;
+    }
+    .nav-brand {
+      font-size: 0.85rem; font-weight: 700;
+      color: var(--yellow); text-decoration: none;
+      text-transform: uppercase; letter-spacing: 0.05em;
+    }
+    .nav-brand:hover { color: var(--yellow2); }
+    .nav-links { display: flex; gap: 1.5rem; font-size: 0.85rem; flex-wrap: wrap; }
+    .nav-links a { color: var(--text-sub); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--text); }
+    .nav-links a.accent { color: var(--yellow); font-weight: 600; }
+
+    /* ─── Hero ───────────────────────────────────────── */
+    .hero {
+      background: var(--dark);
+      border-bottom: 1px solid var(--border);
+      padding: 5rem 1.5rem 4.5rem;
+    }
+    .hero-inner { max-width: 800px; }
+
+    .badge {
+      display: inline-block;
+      font-size: 0.7rem; font-weight: 800;
+      text-transform: uppercase; letter-spacing: 0.15em;
+      color: var(--yellow);
+      border: 1px solid var(--border-y);
+      padding: 0.3rem 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+
+    h1 {
+      font-size: clamp(2.25rem, 5vw, 3.5rem);
+      font-weight: 900; color: var(--text);
+      line-height: 1.1; margin-bottom: 1rem;
+      text-transform: uppercase; letter-spacing: -0.01em;
+    }
+
+    h2 {
+      font-size: clamp(1.4rem, 3.5vw, 1.875rem);
+      font-weight: 800; color: var(--text);
+      line-height: 1.2; margin-bottom: 0.75rem;
+      text-transform: uppercase;
+    }
+
+    .section-label {
+      font-size: 0.65rem; font-weight: 800;
+      color: var(--yellow);
+      text-transform: uppercase; letter-spacing: 0.2em;
+      margin-bottom: 0.875rem; display: block;
+    }
+
+    .lead {
+      font-size: 1.1rem; color: var(--text-sub);
+      line-height: 1.75; max-width: 620px;
+    }
+
+    /* ─── Layout ──────────────────────────────────────── */
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 1.5rem; }
+    .narrow    { max-width: 740px; margin: 0 auto; }
+
+    .section { padding: 4rem 1.5rem; }
+    .section + .section { border-top: 1px solid var(--border); }
+
+    /* ─── Strategy blocks ─────────────────────────────── */
+    .strategy-block {
+      margin-bottom: 2.5rem;
+      padding-left: 1.25rem;
+      border-left: 3px solid var(--border);
+      transition: border-color 0.2s;
+    }
+    .strategy-block:hover { border-left-color: var(--yellow); }
+
+    .strategy-block p,
+    .strategy-block li { color: var(--text-sub); font-size: 0.95rem; line-height: 1.75; }
+    .strategy-block p + p { margin-top: 0.75rem; }
+
+    .strong-list { list-style: none; padding: 0; }
+    .strong-list li {
+      display: flex; gap: 0.875rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-sub); font-size: 0.95rem; line-height: 1.65;
+      align-items: flex-start;
+    }
+    .strong-list li::before {
+      content: '▸';
+      color: var(--yellow); flex-shrink: 0;
+      margin-top: 0.05rem;
+    }
+
+    /* Numbered structure list */
+    .structure-list { list-style: none; padding: 0; counter-reset: step; }
+    .structure-list li {
+      counter-increment: step;
+      display: flex; gap: 1rem;
+      margin-bottom: 0.6rem;
+      color: var(--text-sub); font-size: 0.95rem; line-height: 1.65;
+      align-items: flex-start;
+    }
+    .structure-list li::before {
+      content: counter(step, decimal-leading-zero);
+      display: inline-flex; align-items: center; justify-content: center;
+      min-width: 2.25rem; height: 1.75rem;
+      background: var(--dark2);
+      border: 1px solid var(--border);
+      color: var(--yellow); font-size: 0.7rem; font-weight: 800;
+      letter-spacing: 0.05em; flex-shrink: 0;
+      margin-top: 0.1rem;
+    }
+
+    /* ─── Why This Works ──────────────────────────────── */
+    .why-box {
+      background: var(--dark2);
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--yellow);
+      padding: 2rem; margin-top: 3rem;
+    }
+    .why-list { list-style: none; padding: 0; margin-top: 1rem; }
+    .why-list li {
+      display: flex; gap: 0.875rem;
+      margin-bottom: 0.875rem;
+      color: var(--text-sub); font-size: 0.95rem; line-height: 1.7;
+    }
+    .why-list li::before {
+      content: '//';
+      color: var(--yellow); font-weight: 800;
+      font-size: 0.8rem; flex-shrink: 0;
+      margin-top: 0.1rem; letter-spacing: -0.05em;
+    }
+
+    /* ─── CTA Block ───────────────────────────────────── */
+    .cta-block {
+      background: var(--yellow);
+      padding: 3rem 2rem;
+      text-align: center; margin-top: 3rem;
+    }
+    .cta-block h2 {
+      color: var(--black); font-size: 1.625rem;
+      margin-bottom: 0.75rem; letter-spacing: -0.01em;
+    }
+    .cta-block p {
+      color: rgba(0,0,0,0.7);
+      margin-bottom: 1.75rem;
+      max-width: 480px; margin-left: auto; margin-right: auto;
+      line-height: 1.65;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 1rem 2.25rem;
+      font-weight: 800; font-size: 0.95rem;
+      text-decoration: none; transition: background 0.2s, color 0.2s;
+      cursor: pointer; border: none;
+      text-transform: uppercase; letter-spacing: 0.05em;
+    }
+    .btn-dark { background: var(--black); color: var(--yellow); }
+    .btn-dark:hover { background: var(--dark2); }
+
+    /* ─── Footer ──────────────────────────────────────── */
+    footer {
+      background: var(--dark);
+      border-top: 1px solid var(--border);
+      color: var(--text-dim);
+      padding: 1.5rem;
+    }
+    .footer-inner {
+      max-width: 1000px; margin: 0 auto;
+      display: flex; justify-content: space-between;
+      align-items: center; flex-wrap: wrap; gap: 0.75rem;
+      font-size: 0.875rem;
+    }
+    footer a { color: var(--yellow); text-decoration: none; }
+    footer a:hover { color: var(--yellow2); }
+    .footer-tagline { font-size: 0.8rem; color: var(--text-dim); max-width: 280px; }
+
+    @media (max-width: 640px) {
+      .footer-inner { flex-direction: column; }
+      .footer-tagline { max-width: 100%; }
+    }
+  </style>
 </head>
 <body>
 
   <header>
     <nav>
-      <a href="../index.html" class="nav-brand">Website Strategy Catalog</a>
+      <a href="../index.html" class="nav-brand">← Strategy Catalog</a>
       <div class="nav-links">
-        <a href="../index.html">Home</a>
-        <a href="../index.html#industries">Industries</a>
+        <a href="../index.html#industries">All Industries</a>
         <a href="https://foundationalmile.com" target="_blank" rel="noopener" class="accent">Foundational Mile</a>
       </div>
     </nav>
@@ -24,10 +238,9 @@
 
   <main>
 
-    <!-- Hero -->
     <section class="hero">
-      <div class="container">
-        <span class="label">Construction &amp; Contracting</span>
+      <div class="hero-inner">
+        <span class="badge">Construction &amp; Contracting</span>
         <h1>Construction Contractor Website Strategy</h1>
         <p class="lead">
           Homeowners hiring a contractor are handing someone a key to their home. Trust is the product. A contractor's website must prove reliability and past work before a competitor gets the call.
@@ -35,25 +248,23 @@
       </div>
     </section>
 
-    <!-- Strategy Content -->
     <section class="section">
-      <div class="container" style="max-width:760px;">
-
-        <div class="strategy-grid">
+      <div class="container">
+        <div class="narrow">
 
           <div class="strategy-block">
-            <h3>Primary Audience</h3>
+            <span class="section-label">Primary Audience</span>
             <p>Homeowners with a specific project in mind — a kitchen remodel, a new deck, a roof replacement, a full renovation. They are comparing multiple contractors and doing their homework before calling anyone.</p>
           </div>
 
           <div class="strategy-block">
-            <h3>Primary Goal</h3>
+            <span class="section-label">Primary Goal</span>
             <p>Get a homeowner to request a quote or make a phone call. That single action — an inbound inquiry — is what the entire website should be optimized to produce.</p>
           </div>
 
           <div class="strategy-block">
-            <h3>Secondary Goals</h3>
-            <ul>
+            <span class="section-label">Secondary Goals</span>
+            <ul class="strong-list">
               <li>Communicate the range of services offered clearly</li>
               <li>Establish the company's track record and experience</li>
               <li>Demonstrate that the business is licensed, insured, and professional</li>
@@ -62,8 +273,8 @@
           </div>
 
           <div class="strategy-block">
-            <h3>What Customers Care About</h3>
-            <ul>
+            <span class="section-label">What Customers Care About</span>
+            <ul class="strong-list">
               <li>Have they done this kind of work before? Can I see it?</li>
               <li>Are they reliable? Will they show up and finish the job?</li>
               <li>Are they licensed and insured?</li>
@@ -74,8 +285,8 @@
           </div>
 
           <div class="strategy-block">
-            <h3>What Builds Trust</h3>
-            <ul>
+            <span class="section-label">What Builds Trust</span>
+            <ul class="strong-list">
               <li>A portfolio with real photos of completed projects — before and after when possible</li>
               <li>Customer reviews and testimonials with names and project types</li>
               <li>Years in business stated clearly</li>
@@ -86,8 +297,8 @@
           </div>
 
           <div class="strategy-block">
-            <h3>What Friction Must Be Removed</h3>
-            <ul>
+            <span class="section-label">What Friction Must Be Removed</span>
+            <ul class="strong-list">
               <li>No portfolio — or a portfolio buried deep in the site</li>
               <li>Contact information that's hard to find or requires multiple clicks</li>
               <li>No mention of licensing, insurance, or service area</li>
@@ -98,7 +309,7 @@
           </div>
 
           <div class="strategy-block">
-            <h3>Recommended Homepage Structure</h3>
+            <span class="section-label">Recommended Homepage Structure</span>
             <ol class="structure-list">
               <li>Strong headline with what you do and where — immediately clear</li>
               <li>Primary CTA: "Request a Free Quote" — visible above the fold</li>
@@ -112,14 +323,14 @@
           </div>
 
           <div class="strategy-block">
-            <h3>Call-to-Action Strategy</h3>
+            <span class="section-label">Call-to-Action Strategy</span>
             <p>The primary CTA should be "Request a Free Quote" — it is low-commitment, clear about the outcome, and matches how homeowners think about the process. Make this button visible at the top of every page.</p>
-            <p class="mt-4">Include a phone number prominently alongside the form. Some homeowners prefer to call, and making them work to find the number loses the lead.</p>
+            <p>Include a phone number prominently alongside the form. Some homeowners prefer to call, and making them work to find the number loses the lead.</p>
           </div>
 
           <div class="strategy-block">
-            <h3>What NOT to Focus On</h3>
-            <ul>
+            <span class="section-label">What NOT to Focus On</span>
+            <ul class="strong-list">
               <li>Long company history sections that nobody reads</li>
               <li>Awards and certifications without context — show work instead</li>
               <li>Overly technical descriptions of materials or processes</li>
@@ -128,29 +339,28 @@
             </ul>
           </div>
 
-        </div>
+          <!-- Why This Works -->
+          <div class="why-box">
+            <span class="section-label">Why This Works</span>
+            <ul class="why-list">
+              <li>Homeowners hiring contractors are making a high-trust, high-spend decision. Proof of past work — visible and accessible — removes the biggest objection faster than any copywriting can.</li>
+              <li>Most contractor websites make it too hard to take the next step. A clear, repeated CTA converts curious visitors into inbound leads.</li>
+              <li>People hire people. Putting a real face and name behind the business reduces the impersonal feeling that causes homeowners to keep shopping.</li>
+              <li>Licensing and insurance are table stakes — but stating them clearly signals professionalism and removes a common objection before it's raised.</li>
+              <li>A slow or outdated-looking website signals the same thing as a contractor who doesn't call back. First impressions carry weight.</li>
+            </ul>
+          </div>
 
-        <!-- Why This Works -->
-        <div class="card mt-12">
-          <span class="label">Why This Works</span>
-          <ul class="why-list mt-4">
-            <li>Homeowners hiring contractors are making a high-trust, high-spend decision. Proof of past work — visible and accessible — removes the biggest objection faster than any copywriting can.</li>
-            <li>Most contractor websites make it too hard to take the next step. A clear, repeated CTA converts curious visitors into inbound leads.</li>
-            <li>People hire people. Putting a real face and name behind the business reduces the impersonal feeling that causes homeowners to keep shopping.</li>
-            <li>Licensing and insurance are table stakes — but stating them clearly signals professionalism and removes a common objection before it's raised.</li>
-            <li>A slow or outdated-looking website signals the same thing as a contractor who doesn't call back. First impressions carry weight.</li>
-          </ul>
-        </div>
+          <!-- CTA Block -->
+          <div class="cta-block">
+            <h2>Want help figuring out the right approach for your business?</h2>
+            <p>Foundational Mile helps small businesses think through what they actually need — before spending money going in the wrong direction.</p>
+            <a href="https://foundationalmile.com/#contact" target="_blank" rel="noopener" class="btn btn-dark">
+              Talk with Foundational Mile
+            </a>
+          </div>
 
-        <!-- CTA Block -->
-        <div class="cta-block">
-          <h2>Want help figuring out the right approach for your business?</h2>
-          <p>Foundational Mile helps small businesses think through what they actually need — before spending money going in the wrong direction.</p>
-          <a href="https://foundationalmile.com/#contact" target="_blank" rel="noopener" class="btn btn-primary">
-            Talk with Foundational Mile
-          </a>
         </div>
-
       </div>
     </section>
 

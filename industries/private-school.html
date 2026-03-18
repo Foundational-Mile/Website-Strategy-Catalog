@@ -4,19 +4,271 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Private school website strategy. Learn how to balance academic credibility, community warmth, and practical enrollment information for discerning parents." />
-  <meta name="theme-color" content="#0f172a" />
-  <link rel="icon" href="../assets/images/favicon.ico" />
+  <meta name="theme-color" content="#1e3a5f" />
   <title>Private School Website Strategy — Website Strategy Catalog</title>
-  <link rel="stylesheet" href="../assets/css/styles.css" />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@400;500;600&display=swap');
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    :root {
+      --ivory:    #fffef9;
+      --ivory-alt:#f5f3ed;
+      --navy:     #1e3a5f;
+      --navy-mid: #2d5282;
+      --navy-light:#4a6080;
+      --gold:     #c4902a;
+      --gold-light:#e0aa3a;
+      --gold-pale:#fef3d4;
+      --text:     #1e3a5f;
+      --text-sub: #4a6080;
+      --text-mute:#8a9bb0;
+      --border:   #dce3ec;
+      --border-g: #e8c96a;
+      --white:    #ffffff;
+      --radius:   0.25rem;
+      --radius-lg:0.5rem;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--ivory);
+      color: var(--text);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ─── Header ─────────────────────────────────────── */
+    header {
+      background: var(--navy);
+      border-bottom: 3px solid var(--gold);
+      position: sticky; top: 0; z-index: 50;
+    }
+    nav {
+      max-width: 1000px; margin: 0 auto;
+      padding: 1rem 1.5rem;
+      display: flex; align-items: center;
+      justify-content: space-between; flex-wrap: wrap; gap: 0.75rem;
+    }
+    .nav-brand {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 0.9rem; font-weight: 600;
+      color: var(--gold-light); text-decoration: none;
+      font-style: italic;
+    }
+    .nav-brand:hover { color: white; }
+    .nav-links { display: flex; gap: 1.5rem; font-size: 0.85rem; flex-wrap: wrap; }
+    .nav-links a { color: rgba(255,255,255,0.65); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover { color: white; }
+    .nav-links a.accent { color: var(--gold-light); font-weight: 500; }
+
+    /* ─── Hero ───────────────────────────────────────── */
+    .hero {
+      background: var(--navy);
+      padding: 6rem 1.5rem 5rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .hero-inner { max-width: 780px; }
+
+    .eyebrow {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.72rem; font-weight: 600;
+      color: var(--gold-light);
+      text-transform: uppercase; letter-spacing: 0.18em;
+      margin-bottom: 1.25rem; display: block;
+    }
+
+    h1 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(2rem, 5vw, 3.25rem);
+      font-weight: 700; color: #ffffff;
+      line-height: 1.2; margin-bottom: 1.25rem;
+    }
+
+    h2 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(1.375rem, 3.5vw, 1.875rem);
+      font-weight: 600; color: var(--text);
+      line-height: 1.3; margin-bottom: 1rem;
+    }
+
+    .section-label {
+      font-size: 0.65rem; font-weight: 700;
+      color: var(--navy-mid);
+      text-transform: uppercase; letter-spacing: 0.18em;
+      margin-bottom: 0.875rem; display: block;
+      border-left: 2px solid var(--gold);
+      padding-left: 0.625rem;
+    }
+
+    .lead {
+      font-size: 1.1rem; color: rgba(255,255,255,0.7);
+      line-height: 1.8; max-width: 640px;
+    }
+
+    /* ─── Layout ──────────────────────────────────────── */
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 1.5rem; }
+    .narrow    { max-width: 740px; margin: 0 auto; }
+
+    .section     { padding: 5rem 1.5rem; }
+    .section-alt { background: var(--ivory-alt); }
+
+    /* ─── Rule ────────────────────────────────────────── */
+    .rule {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 2.5rem 0;
+    }
+
+    /* ─── Strategy blocks ─────────────────────────────── */
+    .strategy-block { margin-bottom: 2.75rem; }
+
+    .strategy-block p,
+    .strategy-block li { color: var(--text-sub); font-size: 0.95rem; line-height: 1.8; }
+    .strategy-block p + p { margin-top: 0.875rem; }
+
+    .formal-list { list-style: none; padding: 0; }
+    .formal-list li {
+      display: flex; gap: 0.875rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-sub); font-size: 0.95rem; line-height: 1.7;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px dotted var(--border);
+      align-items: flex-start;
+    }
+    .formal-list li:last-child { border-bottom: none; padding-bottom: 0; }
+    .formal-list li::before {
+      content: '·';
+      color: var(--gold); font-size: 1.25rem; font-weight: 700;
+      flex-shrink: 0; line-height: 1.4;
+    }
+
+    /* Numbered structure list */
+    .structure-list { list-style: none; padding: 0; counter-reset: step; }
+    .structure-list li {
+      counter-increment: step;
+      display: flex; gap: 1rem;
+      margin-bottom: 0.75rem;
+      color: var(--text-sub); font-size: 0.95rem; line-height: 1.7;
+      align-items: flex-start;
+    }
+    .structure-list li::before {
+      content: counter(step);
+      display: inline-flex; align-items: center; justify-content: center;
+      min-width: 1.875rem; height: 1.875rem;
+      border: 1px solid var(--border-g);
+      background: var(--gold-pale);
+      color: var(--gold); font-size: 0.72rem; font-weight: 700;
+      flex-shrink: 0; margin-top: 0.1rem;
+    }
+
+    /* ─── Callout / Pull Quote ────────────────────────── */
+    .pullquote {
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 2rem 0;
+      margin: 2.5rem 0;
+      text-align: center;
+    }
+    .pullquote p {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.25rem; font-style: italic;
+      color: var(--navy); line-height: 1.55;
+      max-width: 520px; margin: 0 auto;
+    }
+
+    /* ─── Why This Works ──────────────────────────────── */
+    .why-box {
+      background: var(--navy);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem; margin-top: 3rem;
+    }
+    .why-box .section-label {
+      color: var(--gold-light);
+      border-left-color: var(--gold);
+    }
+    .why-list { list-style: none; padding: 0; margin-top: 1rem; }
+    .why-list li {
+      display: flex; gap: 0.875rem;
+      margin-bottom: 1rem;
+      color: rgba(255,255,255,0.65); font-size: 0.95rem; line-height: 1.75;
+      align-items: flex-start;
+    }
+    .why-list li::before {
+      content: '';
+      display: inline-block;
+      min-width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--gold);
+      flex-shrink: 0; margin-top: 0.55rem;
+    }
+
+    /* ─── CTA Block ───────────────────────────────────── */
+    .cta-block {
+      background: var(--ivory-alt);
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--navy);
+      padding: 3.5rem 2rem;
+      text-align: center; margin-top: 3rem;
+    }
+    .cta-block h2 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.625rem; margin-bottom: 0.875rem;
+    }
+    .cta-block p {
+      color: var(--text-sub);
+      margin-bottom: 2rem;
+      max-width: 480px; margin-left: auto; margin-right: auto;
+      line-height: 1.7;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.875rem 2.25rem;
+      font-weight: 600; font-size: 0.95rem;
+      text-decoration: none; transition: background 0.2s;
+      cursor: pointer; border: none;
+    }
+    .btn-navy { background: var(--navy); color: white; border-radius: var(--radius); }
+    .btn-navy:hover { background: var(--navy-mid); }
+    .btn-gold { background: var(--gold); color: white; border-radius: var(--radius); }
+    .btn-gold:hover { background: var(--gold-light); }
+
+    /* ─── Footer ──────────────────────────────────────── */
+    footer {
+      background: var(--navy);
+      border-top: 3px solid var(--gold);
+      color: rgba(255,255,255,0.5);
+      padding: 1.75rem 1.5rem;
+    }
+    .footer-inner {
+      max-width: 1000px; margin: 0 auto;
+      display: flex; justify-content: space-between;
+      align-items: center; flex-wrap: wrap; gap: 0.75rem;
+      font-size: 0.875rem;
+    }
+    footer a { color: var(--gold-light); text-decoration: none; }
+    footer a:hover { color: white; }
+    .footer-tagline {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-style: italic; font-size: 0.85rem;
+      color: rgba(255,255,255,0.35); max-width: 300px;
+    }
+
+    @media (max-width: 640px) {
+      .footer-inner { flex-direction: column; text-align: center; }
+      .footer-tagline { max-width: 100%; }
+    }
+  </style>
 </head>
 <body>
 
   <header>
     <nav>
-      <a href="../index.html" class="nav-brand">Website Strategy Catalog</a>
+      <a href="../index.html" class="nav-brand">← Website Strategy Catalog</a>
       <div class="nav-links">
-        <a href="../index.html">Home</a>
-        <a href="../index.html#industries">Industries</a>
+        <a href="../index.html#industries">All Industries</a>
         <a href="https://foundationalmile.com" target="_blank" rel="noopener" class="accent">Foundational Mile</a>
       </div>
     </nav>
@@ -24,10 +276,9 @@
 
   <main>
 
-    <!-- Hero -->
     <section class="hero">
-      <div class="container">
-        <span class="label">Private &amp; Independent Schools</span>
+      <div class="hero-inner">
+        <span class="eyebrow">Private &amp; Independent Schools</span>
         <h1>Private School Website Strategy</h1>
         <p class="lead">
           Parents choosing a school are making one of the most important decisions of their family's life. A private school website must balance academic credibility, community warmth, and practical information — and make it easy to schedule a visit.
@@ -35,25 +286,27 @@
       </div>
     </section>
 
-    <!-- Strategy Content -->
     <section class="section">
-      <div class="container" style="max-width:760px;">
-
-        <div class="strategy-grid">
+      <div class="container">
+        <div class="narrow">
 
           <div class="strategy-block">
-            <h3>Primary Audience</h3>
+            <span class="section-label">Primary Audience</span>
             <p>Parents of school-age children who are evaluating educational options — families new to the area, families dissatisfied with their current school, or families who have always planned to pursue private education. Both parents are often involved in the decision.</p>
           </div>
 
+          <hr class="rule" />
+
           <div class="strategy-block">
-            <h3>Primary Goal</h3>
+            <span class="section-label">Primary Goal</span>
             <p>Get a family to schedule a campus tour or request an admissions packet. In-person visits are where enrollment decisions get made. The website's job is to get the right family through the door.</p>
           </div>
 
+          <hr class="rule" />
+
           <div class="strategy-block">
-            <h3>Secondary Goals</h3>
-            <ul>
+            <span class="section-label">Secondary Goals</span>
+            <ul class="formal-list">
               <li>Communicate the school's academic philosophy and approach</li>
               <li>Show what student life looks like — not just academics</li>
               <li>Provide practical enrollment information including tuition and financial aid</li>
@@ -61,9 +314,11 @@
             </ul>
           </div>
 
+          <hr class="rule" />
+
           <div class="strategy-block">
-            <h3>What Parents Care About</h3>
-            <ul>
+            <span class="section-label">What Parents Care About</span>
+            <ul class="formal-list">
               <li>Will my child thrive here — academically and socially?</li>
               <li>What is the school's educational approach and philosophy?</li>
               <li>What does a typical day look like?</li>
@@ -74,9 +329,11 @@
             </ul>
           </div>
 
+          <hr class="rule" />
+
           <div class="strategy-block">
-            <h3>What Builds Trust</h3>
-            <ul>
+            <span class="section-label">What Builds Trust</span>
+            <ul class="formal-list">
               <li>Accreditation and any relevant academic affiliations — stated simply</li>
               <li>Teacher profiles with experience and tenure information</li>
               <li>Student outcomes: college acceptance rates, test scores, or program achievements</li>
@@ -87,25 +344,29 @@
             </ul>
           </div>
 
+          <hr class="rule" />
+
           <div class="strategy-block">
-            <h3>What Friction Must Be Removed</h3>
-            <ul>
-              <li>Tuition information that is completely absent or buried — this is a top concern for most families</li>
+            <span class="section-label">What Friction Must Be Removed</span>
+            <ul class="formal-list">
+              <li>Tuition information that is completely absent or buried</li>
               <li>Generic language about "excellence" and "developing the whole child" without specific examples</li>
               <li>An enrollment process that is hard to find or requires too many steps to begin</li>
               <li>Outdated photos that make the campus feel dated</li>
-              <li>No virtual tour or video option — many families research remotely before committing to an in-person visit</li>
+              <li>No virtual tour or video option for families researching remotely</li>
               <li>A website that serves current families well but leaves prospective families lost</li>
             </ul>
           </div>
 
+          <hr class="rule" />
+
           <div class="strategy-block">
-            <h3>Recommended Homepage Structure</h3>
+            <span class="section-label">Recommended Homepage Structure</span>
             <ol class="structure-list">
               <li>Mission or vision statement — clear, specific, and human (not generic)</li>
               <li>Primary CTA: "Schedule a Tour" — visible without scrolling</li>
               <li>Academic approach — what makes this school's philosophy distinct</li>
-              <li>Campus and community photos — students in real moments, not posed stock imagery</li>
+              <li>Campus and community photos — students in real moments</li>
               <li>Student outcomes — graduation rates, college acceptances, notable achievements</li>
               <li>Tuition and financial aid overview — even a "starting at" figure reduces anxiety</li>
               <li>Parent and student testimonials — specific and community-focused</li>
@@ -113,15 +374,19 @@
             </ol>
           </div>
 
-          <div class="strategy-block">
-            <h3>Call-to-Action Strategy</h3>
-            <p>The primary CTA should be "Schedule a Tour" — it is warm, non-committal, and matches how families move through the enrollment process. A tour is a conversation, not an application.</p>
-            <p class="mt-4">Offer a secondary CTA for families who are not ready for a tour: "Download Our Admissions Guide" or "Request More Information." This captures leads who need more time without losing them entirely.</p>
-          </div>
+          <hr class="rule" />
 
           <div class="strategy-block">
-            <h3>What NOT to Focus On</h3>
-            <ul>
+            <span class="section-label">Call-to-Action Strategy</span>
+            <p>The primary CTA should be "Schedule a Tour" — it is warm, non-committal, and matches how families move through the enrollment process. A tour is a conversation, not an application.</p>
+            <p>Offer a secondary CTA for families who are not ready for a tour: "Download Our Admissions Guide" or "Request More Information." This captures leads who need more time without losing them entirely.</p>
+          </div>
+
+          <hr class="rule" />
+
+          <div class="strategy-block">
+            <span class="section-label">What NOT to Focus On</span>
+            <ul class="formal-list">
               <li>Long lists of awards and rankings without context — parents want to know what it means for their child</li>
               <li>Institutional history sections that go back decades — lead with today, not the past</li>
               <li>Academic jargon or educational philosophy language that requires translation</li>
@@ -130,29 +395,33 @@
             </ul>
           </div>
 
-        </div>
+          <!-- Pull Quote -->
+          <div class="pullquote">
+            <p>"Choosing a school is an emotional decision wrapped in a practical one. Parents need to feel the community before they can evaluate the academics."</p>
+          </div>
 
-        <!-- Why This Works -->
-        <div class="card mt-12">
-          <span class="label">Why This Works</span>
-          <ul class="why-list mt-4">
-            <li>Choosing a school is an emotional decision wrapped in a practical one. Parents need to feel the community before they can evaluate the academics — and photos, testimonials, and honest language create that feeling online.</li>
-            <li>Tuition is the elephant in the room. Schools that hide pricing lose families who assume it is unaffordable. Transparency builds more trust than discretion.</li>
-            <li>The tour is the conversion. The website's entire job is to get the right family into a room with an admissions counselor — not to close enrollment online.</li>
-            <li>Generic language about excellence is everywhere. Specific claims — "85% of our graduates attend four-year colleges" or "our average teacher has been here 11 years" — are memorable and believable.</li>
-            <li>Parents research together and research repeatedly. A website that is easy to navigate on a phone at 10 PM, during the conversation about where their child should go, wins that moment.</li>
-          </ul>
-        </div>
+          <!-- Why This Works -->
+          <div class="why-box">
+            <span class="section-label">Why This Works</span>
+            <ul class="why-list">
+              <li>Choosing a school is an emotional decision wrapped in a practical one. Parents need to feel the community before they can evaluate the academics — and photos, testimonials, and honest language create that feeling online.</li>
+              <li>Tuition is the elephant in the room. Schools that hide pricing lose families who assume it is unaffordable. Transparency builds more trust than discretion.</li>
+              <li>The tour is the conversion. The website's entire job is to get the right family into a room with an admissions counselor — not to close enrollment online.</li>
+              <li>Generic language about excellence is everywhere. Specific claims — "85% of our graduates attend four-year colleges" or "our average teacher has been here 11 years" — are memorable and believable.</li>
+              <li>Parents research together and research repeatedly. A website that is easy to navigate on a phone at 10 PM, during the conversation about where their child should go, wins that moment.</li>
+            </ul>
+          </div>
 
-        <!-- CTA Block -->
-        <div class="cta-block">
-          <h2>Want help figuring out the right approach for your school?</h2>
-          <p>Foundational Mile helps organizations think through what they actually need — before spending money going in the wrong direction.</p>
-          <a href="https://foundationalmile.com/#contact" target="_blank" rel="noopener" class="btn btn-primary">
-            Talk with Foundational Mile
-          </a>
-        </div>
+          <!-- CTA Block -->
+          <div class="cta-block">
+            <h2>Want help figuring out the right approach for your school?</h2>
+            <p>Foundational Mile helps organizations think through what they actually need — before spending money going in the wrong direction.</p>
+            <a href="https://foundationalmile.com/#contact" target="_blank" rel="noopener" class="btn btn-navy">
+              Talk with Foundational Mile
+            </a>
+          </div>
 
+        </div>
       </div>
     </section>
 
